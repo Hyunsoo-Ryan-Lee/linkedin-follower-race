@@ -3,6 +3,7 @@ import json
 from pathlib import Path
 import sys
 import unittest
+from unittest.mock import patch
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 from collect_public import collect, parse_count
 
@@ -38,6 +39,23 @@ class PublicCollectionTests(unittest.TestCase):
         self.assertEqual(len(updated["observations"]), 1)
         self.assertEqual(updated["collection"]["state"], "ok")
         self.assertEqual(updated["observations"][0]["databricks"], 1450013)
+
+    def test_manual_run_does_not_claim_a_scheduled_success(self):
+        data = {"schemaVersion": 1, "observations": []}
+        with patch.dict('os.environ', {'GITHUB_EVENT_NAME': 'workflow_dispatch'}):
+            result = collect(data, lambda _: {"state": "ok", "count": 100})
+        self.assertEqual(result['collection']['event'], 'workflow_dispatch')
+        self.assertIsNone(result['collection']['lastScheduledSuccessAt'])
+
+    def test_scheduled_success_survives_a_later_manual_run(self):
+        data = {"schemaVersion": 1, "observations": []}
+        with patch.dict('os.environ', {'GITHUB_EVENT_NAME': 'schedule'}):
+            result = collect(data, lambda _: {"state": "ok", "count": 100})
+        scheduled = result['collection']['lastScheduledSuccessAt']
+        self.assertEqual(scheduled, result['observations'][-1]['observedAt'])
+        with patch.dict('os.environ', {'GITHUB_EVENT_NAME': 'workflow_dispatch'}):
+            result = collect(result, lambda _: {"state": "ok", "count": 101})
+        self.assertEqual(result['collection']['lastScheduledSuccessAt'], scheduled)
 
 
 if __name__ == "__main__":

@@ -37,7 +37,7 @@
     </section>
     <section class="share-section" aria-label="두 회사 합산 팔로워 비중"><div class="share-top"><span><i class="legend-dot db-dot"></i> Databricks <strong id="db-share">—</strong></span><span class="share-caption">두 계정 합산 기준 · 중복 팔로워 포함</span><span><strong id="sf-share">—</strong> Snowflake <i class="legend-dot sf-dot"></i></span></div><div class="share-bar" role="img" id="share-bar" aria-label="데이터를 불러오는 중"><span id="db-bar"></span><span id="sf-bar"></span></div></section>
     <section class="chart-panel" aria-labelledby="chart-title"><div class="section-heading"><div><div class="eyebrow muted-eyebrow">THE BIG PICTURE</div><h2 id="chart-title">숫자로 보는 레이스</h2></div><div class="chart-controls"><div class="segmented" role="group" aria-label="차트 표시 방식"><button type="button" data-mode="total" class="selected" aria-pressed="true">팔로워 수</button><button type="button" data-mode="gap" aria-pressed="false">격차</button></div><div class="periods" role="group" aria-label="차트 조회 기간"><button type="button" data-hours="24" aria-pressed="false">24시간</button><button type="button" data-hours="168" aria-pressed="false">7일</button><button type="button" data-hours="0" class="selected" aria-pressed="true">전체</button></div></div></div><div class="chart-meta"><div class="chart-legend" id="chart-legend"><span><i class="legend-dot db-dot"></i>Databricks</span><span><i class="legend-dot sf-dot"></i>Snowflake</span></div><span id="chart-period">관측 데이터만 표시합니다</span></div><div class="chart-container" id="chart-container"><svg id="trend-chart" viewBox="0 0 1120 275" role="img" aria-label="팔로워 관측 추이" preserveAspectRatio="xMidYMid meet"></svg><div class="chart-tooltip" id="chart-tooltip" role="status" hidden></div><div class="empty-chart" id="empty-chart" hidden><span aria-hidden="true">↗</span><strong>레이스의 첫 기록이 도착했어요</strong><p>다음 관측부터 실제 변화가 선으로 이어집니다.<br>수집 전의 과거 데이터는 만들어 표시하지 않아요.</p></div></div><div class="chart-footnote"><span id="chart-note">관측 시작 이후 수집된 실제 수치입니다.</span><span>시간 기준: <strong>Asia/Seoul</strong></span></div></section>
-    <section class="bottom-grid"><article class="history-panel"><div class="section-heading"><div><div class="eyebrow muted-eyebrow">OBSERVATION LOG</div><h2>최근 관측 기록</h2></div><button id="export-button" class="text-button" type="button">CSV 내보내기 <span aria-hidden="true">↓</span></button></div><div class="table-scroll"><table><caption class="sr-only">관측 시각별 두 회사의 팔로워 수와 격차</caption><thead><tr><th scope="col">관측 시각 <small>KST</small></th><th scope="col">Databricks</th><th scope="col">Snowflake</th><th scope="col">격차 <small>DB − SF</small></th></tr></thead><tbody id="history-body"><tr><td colspan="4" class="table-empty">데이터를 불러오는 중입니다.</td></tr></tbody></table></div><p class="table-footer" id="history-count">기록을 불러오고 있어요.</p></article><aside class="about-panel"><div class="about-icon" aria-hidden="true">i</div><h2>이 숫자는 어디서 오나요?</h2><p>두 회사의 LinkedIn 공식 페이지에서 확인한 팔로워 수를 기록합니다.</p><dl><div><dt>데이터 수집</dt><dd>클라우드 · 5분 간격 목표</dd></div><div><dt>최근 수집 시도</dt><dd id="last-attempt">첫 클라우드 실행 대기</dd></div><div><dt>화면 동기화</dt><dd>60초 간격</dd></div><div><dt>마지막 관측</dt><dd id="last-observed">—</dd></div><div><dt>마지막 동기화</dt><dd id="last-synced">—</dd></div><div><dt>수집 시작</dt><dd id="started-at">—</dd></div></dl><div class="source-note"><strong>알아두세요</strong><p>클라우드에서 두 회사의 공개 페이지를 주기적으로 조회합니다. 개인 컴퓨터나 브라우저를 켤 필요는 없습니다. LinkedIn 접근 제한이나 예약 실행 지연이 생기면 마지막 확인값을 유지하며, 15분 이상 새 관측이 없으면 지연으로 표시합니다.</p></div></aside></section>
+    <section class="bottom-grid"><article class="history-panel"><div class="section-heading"><div><div class="eyebrow muted-eyebrow">OBSERVATION LOG</div><h2>최근 관측 기록</h2></div><button id="export-button" class="text-button" type="button">CSV 내보내기 <span aria-hidden="true">↓</span></button></div><div class="table-scroll"><table><caption class="sr-only">관측 시각별 두 회사의 팔로워 수와 격차</caption><thead><tr><th scope="col">관측 시각 <small>KST</small></th><th scope="col">Databricks</th><th scope="col">Snowflake</th><th scope="col">격차 <small>DB − SF</small></th></tr></thead><tbody id="history-body"><tr><td colspan="4" class="table-empty">데이터를 불러오는 중입니다.</td></tr></tbody></table></div><p class="table-footer" id="history-count">기록을 불러오고 있어요.</p></article><aside class="about-panel"><div class="about-icon" aria-hidden="true">i</div><h2>이 숫자는 어디서 오나요?</h2><p>두 회사의 LinkedIn 공식 페이지에서 확인한 팔로워 수를 기록합니다.</p><dl><div><dt>데이터 수집</dt><dd>클라우드 · 5분 간격 목표</dd></div><div><dt>최근 수집 시도</dt><dd id="last-attempt">첫 클라우드 실행 대기</dd></div><div><dt>최근 실행 유형</dt><dd id="last-trigger">확인 중</dd></div><div><dt>예약 수집 마지막 성공</dt><dd id="scheduled-status">예약 실행 성공 미확인</dd></div><div><dt>화면 동기화</dt><dd>60초 간격</dd></div><div><dt>마지막 관측</dt><dd id="last-observed">—</dd></div><div><dt>마지막 동기화</dt><dd id="last-synced">—</dd></div><div><dt>수집 시작</dt><dd id="started-at">—</dd></div></dl><div class="source-note"><strong>알아두세요</strong><p>클라우드에서 두 회사의 공개 페이지를 주기적으로 조회합니다. 개인 컴퓨터나 브라우저를 켤 필요는 없습니다. LinkedIn 접근 제한이나 예약 실행 지연이 생기면 마지막 확인값을 유지하며, 15분 이상 새 관측이 없으면 지연으로 표시합니다.</p></div></aside></section>
     <footer><a class="footer-brand" href="./">↗ follower<span>race</span></a><p>Independent tracker. Databricks · Snowflake · LinkedIn과 제휴하지 않습니다.</p><a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">View on LinkedIn ↗</a></footer>
   </main>
   <div class="sr-only" aria-live="polite" id="announcement"></div>
@@ -71,8 +71,39 @@ window.__INITIAL_DATA__={
       "observedAt": "2026-11-21T10:13:44.825Z",
       "databricks": 1450013,
       "snowflake": 1450422
+    },
+    {
+      "observedAt": "2026-11-21T10:33:13.870Z",
+      "databricks": 1450023,
+      "snowflake": 1450425
+    },
+    {
+      "observedAt": "2026-11-21T10:35:00.990Z",
+      "databricks": 1450023,
+      "snowflake": 1450426
     }
-  ]
+  ],
+  "collection": {
+    "state": "ok",
+    "source": "github-actions-public-html",
+    "attemptedAt": "2026-11-21T10:34:59.547Z",
+    "completedAt": "2026-11-21T10:35:00.990Z",
+    "lastSuccessAt": "2026-11-21T10:35:00.990Z",
+    "companies": {
+      "databricks": {
+        "state": "ok",
+        "httpStatus": 200,
+        "count": 1450023,
+        "sourceUrl": "https://www.linkedin.com/company/databricks/"
+      },
+      "snowflake": {
+        "state": "ok",
+        "httpStatus": 200,
+        "count": 1450426,
+        "sourceUrl": "https://www.linkedin.com/company/snowflake-computing/"
+      }
+    }
+  }
 }
 ;
 const COMPANIES = {
@@ -266,6 +297,8 @@ async function loadData() {
     const collectionFailed = collectionStatus && collectionStatus.state !== 'ok';
     showMessage(collectionFailed ? '클라우드에서 LinkedIn을 조회했지만 새 팔로워 수를 확인하지 못했습니다. 마지막으로 검증된 관측값을 유지합니다. 아래에서 최근 수집 시도를 확인할 수 있어요.' : '');
     if (document.getElementById('last-attempt')) put('last-attempt', collectionStatus?.attemptedAt ? dateTime.format(new Date(collectionStatus.attemptedAt)) : '첫 클라우드 실행 대기');
+    if (document.getElementById('last-trigger')) put('last-trigger', ({ schedule: '예약 실행', workflow_dispatch: '수동 실행', push: '코드 변경' })[collectionStatus?.event] || '실행 유형 확인 중');
+    if (document.getElementById('scheduled-status')) put('scheduled-status', collectionStatus?.lastScheduledSuccessAt ? dateTime.format(new Date(collectionStatus.lastScheduledSuccessAt)) : '예약 실행 성공 미확인');
     put('last-synced', timeOnly.format(new Date()));
     render();
     put('announcement', `관측 데이터 동기화 완료. Databricks ${number.format(rows.at(-1).databricks)}명, Snowflake ${number.format(rows.at(-1).snowflake)}명.`);

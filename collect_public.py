@@ -8,6 +8,7 @@ from html.parser import HTMLParser
 import argparse
 import html
 import json
+import os
 from pathlib import Path
 import re
 import urllib.error
@@ -141,17 +142,25 @@ def fetch_company(company):
 
 
 def collect(data, fetch=fetch_company):
+    previous_collection = data.get("collection", {})
     started = now()
     results = {company: fetch(company) for company in COMPANIES}
     complete = all(result["state"] == "ok" for result in results.values())
     state = "ok" if complete else "blocked" if any(r["state"] == "blocked" for r in results.values()) else "error"
     completed = now()
+    event = os.environ.get("GITHUB_EVENT_NAME", "local")
+    last_scheduled_attempt = started if event == "schedule" else previous_collection.get("lastScheduledAttemptAt")
+    last_scheduled_success = completed if event == "schedule" and complete else previous_collection.get("lastScheduledSuccessAt")
     if complete:
         data["observations"].append({"observedAt": completed, **{company: exact_integer(result["count"]) for company, result in results.items()}})
         data["observations"] = data["observations"][-25920:]
     data["collection"] = {
         "state": state,
         "source": "github-actions-public-html",
+        "event": event,
+        "lastScheduledAttemptAt": last_scheduled_attempt,
+        "lastScheduledSuccessAt": last_scheduled_success,
+        "runUrl": f"https://github.com/Hyunsoo-Ryan-Lee/linkedin-follower-race/actions/runs/{os.environ['GITHUB_RUN_ID']}" if os.environ.get("GITHUB_RUN_ID", "").isdigit() else None,
         "attemptedAt": started,
         "completedAt": completed,
         "lastSuccessAt": data["observations"][-1]["observedAt"] if data["observations"] else None,
@@ -173,9 +182,9 @@ def main():
     temporary.replace(args.data)
     status = updated["collection"]
     print(json.dumps(status, ensure_ascii=False, indent=2))
-    summary_path = __import__("os").environ.get("GITHUB_STEP_SUMMARY")
+    summary_path = os.environ.get("GITHUB_STEP_SUMMARY")
     if summary_path:
-        lines = ["## LinkedIn public-page collection", "", f"Result: **{status['state']}**", "", "| Company | Result | HTTP | Exact followers |", "|---|---|---|---|"]
+        lines = ["## LinkedIn public-page collection", "", f"Result: **{status['state']}**", f"Trigger: **{status['event']}**", f"Last successful scheduled collection: **{status['lastScheduledSuccessAt'] or 'Not verified yet'}**", "", "| Company | Result | HTTP | Exact followers |", "|---|---|---|---|"]
         for company, result in status["companies"].items():
             lines.append(f"| {company} | {result['state']} | {result.get('httpStatus', '—')} | {result.get('count', '—')} |")
         if status["state"] != "ok":
