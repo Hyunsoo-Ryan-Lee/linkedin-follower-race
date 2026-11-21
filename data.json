@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "LinkedIn official company pages, observed in signed-in Brave",
+  "collectionIntervalMinutes": 5,
+  "observations": [
+    { "observedAt": "2026-11-21T10:03:11.301Z", "databricks": 1450007, "snowflake": 1450420 }
+  ]
+}
