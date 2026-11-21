@@ -32,25 +32,30 @@
       "observedAt": "2026-11-21T10:35:00.990Z",
       "databricks": 1450023,
       "snowflake": 1450426
+    },
+    {
+      "observedAt": "2026-11-21T10:52:51.939Z",
+      "databricks": 1450035,
+      "snowflake": 1450430
     }
   ],
   "collection": {
     "state": "ok",
     "source": "github-actions-public-html",
-    "attemptedAt": "2026-11-21T10:34:59.547Z",
-    "completedAt": "2026-11-21T10:35:00.990Z",
-    "lastSuccessAt": "2026-11-21T10:35:00.990Z",
+    "attemptedAt": "2026-11-21T10:52:50.540Z",
+    "completedAt": "2026-11-21T10:52:51.939Z",
+    "lastSuccessAt": "2026-11-21T10:52:51.939Z",
     "companies": {
       "databricks": {
         "state": "ok",
         "httpStatus": 200,
-        "count": 1450023,
+        "count": 1450035,
         "sourceUrl": "https://www.linkedin.com/company/databricks/"
       },
       "snowflake": {
         "state": "ok",
         "httpStatus": 200,
-        "count": 1450426,
+        "count": 1450430,
         "sourceUrl": "https://www.linkedin.com/company/snowflake-computing/"
       }
     }
