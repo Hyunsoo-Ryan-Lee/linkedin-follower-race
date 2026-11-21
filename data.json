@@ -68,30 +68,36 @@
       "observedAt": "2026-11-21T12:18:20.592Z",
       "databricks": 1450081,
       "snowflake": 1450449
+    },
+    {
+      "observedAt": "2026-11-21T12:23:28.816Z",
+      "databricks": 1450088,
+      "snowflake": 1450453,
+      "requestId": "058d6774-1fa0-49b7-9a8e-07d3c7ed3777"
     }
   ],
   "collection": {
     "state": "ok",
     "source": "github-actions-public-html",
-    "event": "push",
-    "requestId": null,
+    "event": "workflow_dispatch",
+    "requestId": "058d6774-1fa0-49b7-9a8e-07d3c7ed3777",
     "lastScheduledAttemptAt": null,
     "lastScheduledSuccessAt": null,
-    "runUrl": "https://github.com/Hyunsoo-Ryan-Lee/linkedin-follower-race/actions/runs/44903219149",
-    "attemptedAt": "2026-11-21T12:18:19.012Z",
-    "completedAt": "2026-11-21T12:18:20.592Z",
-    "lastSuccessAt": "2026-11-21T12:18:20.592Z",
+    "runUrl": "https://github.com/Hyunsoo-Ryan-Lee/linkedin-follower-race/actions/runs/44903649712",
+    "attemptedAt": "2026-11-21T12:23:27.398Z",
+    "completedAt": "2026-11-21T12:23:28.816Z",
+    "lastSuccessAt": "2026-11-21T12:23:28.816Z",
     "companies": {
       "databricks": {
         "state": "ok",
         "httpStatus": 200,
-        "count": 1450081,
+        "count": 1450088,
         "sourceUrl": "https://www.linkedin.com/company/databricks/"
       },
       "snowflake": {
         "state": "ok",
         "httpStatus": 200,
-        "count": 1450449,
+        "count": 1450453,
         "sourceUrl": "https://www.linkedin.com/company/snowflake-computing/"
       }
     }
@@ -103,6 +109,13 @@
       "completedAt": "2026-11-21T12:13:23.947Z",
       "observedAt": "2026-11-21T12:13:23.947Z",
       "runUrl": "https://github.com/Hyunsoo-Ryan-Lee/linkedin-follower-race/actions/runs/44902790835"
+    },
+    {
+      "id": "058d6774-1fa0-49b7-9a8e-07d3c7ed3777",
+      "state": "ok",
+      "completedAt": "2026-11-21T12:23:28.816Z",
+      "observedAt": "2026-11-21T12:23:28.816Z",
+      "runUrl": "https://github.com/Hyunsoo-Ryan-Lee/linkedin-follower-race/actions/runs/44903649712"
     }
   ]
 }
