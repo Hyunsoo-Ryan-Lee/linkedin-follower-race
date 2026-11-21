@@ -1,0 +1,19 @@
+name: Scheduler diagnostic (temporary)
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '1,6,11,16,21,26,31,36,41,46,51,56 * * * *'
+
+permissions:
+  contents: read
+
+jobs:
+  report-trigger:
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    steps:
+      - name: Report actual trigger
+        run: |
+          printf 'event=%s\nrun=%s\nactor=%s\n' "$GITHUB_EVENT_NAME" "$GITHUB_RUN_ID" "$GITHUB_ACTOR"
+          date -u '+utc=%Y-%m-%dT%H:%M:%SZ'
