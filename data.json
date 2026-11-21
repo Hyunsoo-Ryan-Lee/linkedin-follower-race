@@ -74,19 +74,25 @@
       "databricks": 1450088,
       "snowflake": 1450453,
       "requestId": "058d6774-1fa0-49b7-9a8e-07d3c7ed3777"
+    },
+    {
+      "observedAt": "2026-11-21T12:28:18.088Z",
+      "databricks": 1450088,
+      "snowflake": 1450453,
+      "requestId": "33af73be-61ef-498a-b26b-9ff97feba0ca"
     }
   ],
   "collection": {
     "state": "ok",
     "source": "github-actions-public-html",
     "event": "workflow_dispatch",
-    "requestId": "058d6774-1fa0-49b7-9a8e-07d3c7ed3777",
+    "requestId": "33af73be-61ef-498a-b26b-9ff97feba0ca",
     "lastScheduledAttemptAt": null,
     "lastScheduledSuccessAt": null,
-    "runUrl": "https://github.com/Hyunsoo-Ryan-Lee/linkedin-follower-race/actions/runs/44903649712",
-    "attemptedAt": "2026-11-21T12:23:27.398Z",
-    "completedAt": "2026-11-21T12:23:28.816Z",
-    "lastSuccessAt": "2026-11-21T12:23:28.816Z",
+    "runUrl": "https://github.com/Hyunsoo-Ryan-Lee/linkedin-follower-race/actions/runs/44904052688",
+    "attemptedAt": "2026-11-21T12:28:16.644Z",
+    "completedAt": "2026-11-21T12:28:18.088Z",
+    "lastSuccessAt": "2026-11-21T12:28:18.088Z",
     "companies": {
       "databricks": {
         "state": "ok",
@@ -116,6 +122,13 @@
       "completedAt": "2026-11-21T12:23:28.816Z",
       "observedAt": "2026-11-21T12:23:28.816Z",
       "runUrl": "https://github.com/Hyunsoo-Ryan-Lee/linkedin-follower-race/actions/runs/44903649712"
+    },
+    {
+      "id": "33af73be-61ef-498a-b26b-9ff97feba0ca",
+      "state": "ok",
+      "completedAt": "2026-11-21T12:28:18.088Z",
+      "observedAt": "2026-11-21T12:28:18.088Z",
+      "runUrl": "https://github.com/Hyunsoo-Ryan-Lee/linkedin-follower-race/actions/runs/44904052688"
     }
   ]
 }
