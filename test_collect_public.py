@@ -57,6 +57,26 @@ class PublicCollectionTests(unittest.TestCase):
             result = collect(result, lambda _: {"state": "ok", "count": 101})
         self.assertEqual(result['collection']['lastScheduledSuccessAt'], scheduled)
 
+    def test_dashboard_request_remains_identifiable_after_later_updates(self):
+        request = 'e55e8345-34fd-4ff4-8fe8-c3a6b5e1d872'
+        data = {"schemaVersion": 1, "observations": []}
+        with patch.dict('os.environ', {'GITHUB_EVENT_NAME': 'workflow_dispatch', 'DASHBOARD_REQUEST_ID': request}):
+            result = collect(data, lambda _: {"state": "ok", "count": 100})
+        self.assertEqual(result['observations'][-1]['requestId'], request)
+        self.assertEqual(result['requests'][-1]['id'], request)
+        with patch.dict('os.environ', {'GITHUB_EVENT_NAME': 'schedule', 'DASHBOARD_REQUEST_ID': ''}):
+            result = collect(result, lambda _: {"state": "ok", "count": 101})
+        self.assertEqual(result['requests'][-1]['id'], request)
+        self.assertNotIn('requestId', result['observations'][-1])
+
+    def test_failed_dashboard_request_is_recorded_without_inventing_an_observation(self):
+        request = 'e55e8345-34fd-4ff4-8fe8-c3a6b5e1d872'
+        data = {"schemaVersion": 1, "observations": []}
+        with patch.dict('os.environ', {'DASHBOARD_REQUEST_ID': request}):
+            result = collect(data, lambda _: {"state": "blocked", "httpStatus": 999})
+        self.assertEqual(result['requests'][-1]['state'], 'blocked')
+        self.assertEqual(result['observations'], [])
+
 
 if __name__ == "__main__":
     unittest.main()

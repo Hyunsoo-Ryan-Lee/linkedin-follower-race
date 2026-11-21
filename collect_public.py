@@ -142,6 +142,9 @@ def fetch_company(company):
 
 
 def collect(data, fetch=fetch_company):
+    request_id = os.environ.get("DASHBOARD_REQUEST_ID", "").strip().lower()
+    if request_id and not re.fullmatch(r"[0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12}", request_id):
+        raise ValueError("Invalid dashboard request identifier")
     previous_collection = data.get("collection", {})
     started = now()
     results = {company: fetch(company) for company in COMPANIES}
@@ -152,12 +155,13 @@ def collect(data, fetch=fetch_company):
     last_scheduled_attempt = started if event == "schedule" else previous_collection.get("lastScheduledAttemptAt")
     last_scheduled_success = completed if event == "schedule" and complete else previous_collection.get("lastScheduledSuccessAt")
     if complete:
-        data["observations"].append({"observedAt": completed, **{company: exact_integer(result["count"]) for company, result in results.items()}})
+        data["observations"].append({"observedAt": completed, **{company: exact_integer(result["count"]) for company, result in results.items()}, **({"requestId": request_id} if request_id else {})})
         data["observations"] = data["observations"][-25920:]
     data["collection"] = {
         "state": state,
         "source": "github-actions-public-html",
         "event": event,
+        "requestId": request_id or None,
         "lastScheduledAttemptAt": last_scheduled_attempt,
         "lastScheduledSuccessAt": last_scheduled_success,
         "runUrl": f"https://github.com/Hyunsoo-Ryan-Lee/linkedin-follower-race/actions/runs/{os.environ['GITHUB_RUN_ID']}" if os.environ.get("GITHUB_RUN_ID", "").isdigit() else None,
@@ -166,6 +170,10 @@ def collect(data, fetch=fetch_company):
         "lastSuccessAt": data["observations"][-1]["observedAt"] if data["observations"] else None,
         "companies": results,
     }
+    if request_id:
+        requests = [r for r in data.get("requests", []) if r.get("id") != request_id]
+        requests.append({"id": request_id, "state": state, "completedAt": completed, "observedAt": completed if complete else None, "runUrl": data["collection"]["runUrl"]})
+        data["requests"] = requests[-50:]
     return data
 
 

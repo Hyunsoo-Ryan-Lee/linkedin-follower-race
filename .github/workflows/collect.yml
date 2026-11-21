@@ -1,7 +1,14 @@
 name: Collect LinkedIn followers
+run-name: Follower collection / ${{ github.event_name }} / ${{ inputs.request_id || 'automatic' }}
 
 on:
   workflow_dispatch:
+    inputs:
+      request_id:
+        description: Dashboard refresh request identifier
+        required: false
+        type: string
+        default: ''
   schedule:
     # GitHub delivers scheduled events on a best-effort basis, not a timer SLA.
     - cron: '*/5 * * * *'
@@ -33,6 +40,8 @@ jobs:
       - name: Validate collector
         run: python3 -m unittest -v test_collect_public.py
       - name: Collect public company follower counts
+        env:
+          DASHBOARD_REQUEST_ID: ${{ inputs.request_id || '' }}
         run: python3 collect_public.py --data data.json
       - name: Retain observation history and attempt status
         run: |
