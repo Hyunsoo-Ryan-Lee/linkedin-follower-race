@@ -206,30 +206,35 @@
       "observedAt": "2026-11-22T11:03:44.210Z",
       "databricks": 1450872,
       "snowflake": 1450802
+    },
+    {
+      "observedAt": "2026-11-22T13:21:30.666Z",
+      "databricks": 1450957,
+      "snowflake": 1450836
     }
   ],
   "collection": {
     "state": "ok",
     "source": "github-actions-public-html",
-    "event": "schedule",
+    "event": "workflow_dispatch",
     "requestId": null,
     "lastScheduledAttemptAt": "2026-11-22T11:03:42.901Z",
     "lastScheduledSuccessAt": "2026-11-22T11:03:44.210Z",
-    "runUrl": "https://github.com/Hyunsoo-Ryan-Lee/linkedin-follower-race/actions/runs/45015434958",
-    "attemptedAt": "2026-11-22T11:03:42.901Z",
-    "completedAt": "2026-11-22T11:03:44.210Z",
-    "lastSuccessAt": "2026-11-22T11:03:44.210Z",
+    "runUrl": "https://github.com/Hyunsoo-Ryan-Lee/linkedin-follower-race/actions/runs/45027045785",
+    "attemptedAt": "2026-11-22T13:21:29.252Z",
+    "completedAt": "2026-11-22T13:21:30.666Z",
+    "lastSuccessAt": "2026-11-22T13:21:30.666Z",
     "companies": {
       "databricks": {
         "state": "ok",
         "httpStatus": 200,
-        "count": 1450872,
+        "count": 1450957,
         "sourceUrl": "https://www.linkedin.com/company/databricks/"
       },
       "snowflake": {
         "state": "ok",
         "httpStatus": 200,
-        "count": 1450802,
+        "count": 1450836,
         "sourceUrl": "https://www.linkedin.com/company/snowflake-computing/"
       }
     }
