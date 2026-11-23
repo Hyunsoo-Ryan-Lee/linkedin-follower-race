@@ -237,30 +237,36 @@
       "observedAt": "2026-11-23T14:09:19.105Z",
       "databricks": 1452021,
       "snowflake": 1451199
+    },
+    {
+      "observedAt": "2026-11-23T16:11:24.126Z",
+      "databricks": 1452138,
+      "snowflake": 1451252,
+      "requestId": "c38bcd76-540e-4668-92d2-675f66abec3f"
     }
   ],
   "collection": {
     "state": "ok",
     "source": "github-actions-public-html",
-    "event": "schedule",
-    "requestId": null,
+    "event": "workflow_dispatch",
+    "requestId": "c38bcd76-540e-4668-92d2-675f66abec3f",
     "lastScheduledAttemptAt": "2026-11-23T14:09:17.345Z",
     "lastScheduledSuccessAt": "2026-11-23T14:09:19.105Z",
-    "runUrl": "https://github.com/Hyunsoo-Ryan-Lee/linkedin-follower-race/actions/runs/45191114472",
-    "attemptedAt": "2026-11-23T14:09:17.345Z",
-    "completedAt": "2026-11-23T14:09:19.105Z",
-    "lastSuccessAt": "2026-11-23T14:09:19.105Z",
+    "runUrl": "https://github.com/Hyunsoo-Ryan-Lee/linkedin-follower-race/actions/runs/45213633048",
+    "attemptedAt": "2026-11-23T16:11:22.527Z",
+    "completedAt": "2026-11-23T16:11:24.126Z",
+    "lastSuccessAt": "2026-11-23T16:11:24.126Z",
     "companies": {
       "databricks": {
         "state": "ok",
         "httpStatus": 200,
-        "count": 1452021,
+        "count": 1452138,
         "sourceUrl": "https://www.linkedin.com/company/databricks/"
       },
       "snowflake": {
         "state": "ok",
         "httpStatus": 200,
-        "count": 1451199,
+        "count": 1451252,
         "sourceUrl": "https://www.linkedin.com/company/snowflake-computing/"
       }
     }
@@ -405,6 +411,13 @@
       "completedAt": "2026-11-23T13:57:24.573Z",
       "observedAt": "2026-11-23T13:57:24.573Z",
       "runUrl": "https://github.com/Hyunsoo-Ryan-Lee/linkedin-follower-race/actions/runs/45189046541"
+    },
+    {
+      "id": "c38bcd76-540e-4668-92d2-675f66abec3f",
+      "state": "ok",
+      "completedAt": "2026-11-23T16:11:24.126Z",
+      "observedAt": "2026-11-23T16:11:24.126Z",
+      "runUrl": "https://github.com/Hyunsoo-Ryan-Lee/linkedin-follower-race/actions/runs/45213633048"
     }
   ]
 }
